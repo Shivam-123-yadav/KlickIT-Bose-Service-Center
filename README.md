@@ -1,10 +1,14 @@
-# Bose Service Center – Service Booking Platform
+# Bose Service Centre — Service Booking & E-Commerce Platform
 
-> ⚠️ **Note:** The original production website is currently offline due to organizational changes at the company. The application remains fully functional and can be redeployed on request. A GitHub Pages preview/demo link will be added below.
+A Django-based service booking and e-commerce platform built for a Bose product retailer, covering
+online product sales, customer service appointment booking, and payment processing.
 
-A production-grade service booking platform built with Django for managing customer service requests, online payments, order processing, and administrative operations.
+> **Note:** The original production deployment is currently offline due to organisational changes
+> at the client company. The application is fully functional and can be redeployed on request. A
+> hosted demo link will be added here once available.
 
-The platform successfully processed **500+ customer bookings during its first quarter in production** with **zero critical payment failures**, ensuring a reliable booking and payment experience.
+The platform processed 500+ customer bookings in its first quarter in production, with a payment
+flow designed around server-side callback verification to prevent duplicate or mismatched orders.
 
 ---
 
@@ -18,102 +22,58 @@ The platform successfully processed **500+ customer bookings during its first qu
 
 ---
 
-# Tech Stack
+## Tech Stack
 
-## Backend
-
-- Python
-- Django
-
-## Database
-
-- MySQL
-
-## Frontend
-
-- HTML
-- CSS
-- JavaScript
-
-## Payment Gateway
-
-- Cashfree Payments
-
-## Deployment
-
-- Linux VPS
-- Gunicorn
-- Nginx
+| Layer | Technology |
+|---|---|
+| Backend | Python, Django, Django REST Framework |
+| Database | MySQL |
+| Frontend | HTML, CSS, JavaScript |
+| Async / Data | Pandas (CSV product import), Playwright (review scraping) |
+| Payments | Cashfree Payment Gateway |
+| PDF Generation | WeasyPrint |
+| Deployment | Linux VPS, Gunicorn, Nginx |
 
 ---
 
-# Key Features
+## Key Features
 
-- Customer service booking system
-- Secure online payment integration using Cashfree
-- Real-time booking confirmation
-- Order lifecycle management
-- Custom admin dashboard
-- Customer and order management
-- Inventory management
-- Email notifications for customers
-- Authentication and authorization
-- Responsive user interface
-- Production deployment with Gunicorn and Nginx
-
----
-
-# Project Highlights
-
-- Successfully handled **500+ real customer bookings**
-- Zero critical payment failures in production
-- Secure payment workflow
-- Custom Django admin for business operations
-- Production-ready deployment on Linux VPS
-- Optimized database queries for better performance
+- Product catalogue with categories, colour variants, and image management
+- Cart, wishlist, checkout, and order history
+- Customer service appointment booking (onsite and offsite visits)
+- Cashfree payment integration with server-side callback verification
+- CSV-based bulk product import
+- Google review scraping for product pages
+- Custom Django admin for order, inventory, and appointment management
+- SEO: slug-based URLs, sitemap, robots.txt
+- Email notifications for orders and bookings
+- JWT-ready authentication with custom user model
 
 ---
 
-# Live Website
-
-> ⚠️ The original production domain (`boseservicecenter.co.in`) is currently unavailable due to company-side changes and is no longer under my control.
-
-**Demo / Preview**
-
-GitHub Pages: **Add your GitHub Pages link here**
-
 ---
 
-# Installation
+## Installation
 
-Clone the repository
+**Prerequisites:** Python 3.10+, MySQL server, pip
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/bose-service-center.git
+git clone https://github.com/Shivam-123-yadav/bose-service-centre.git
+cd bose-service-centre
 ```
 
-Go to the project directory
-
-```bash
-cd bose-service-center
-```
-
-Create a virtual environment
+Create and activate a virtual environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate the virtual environment
-
-### Windows
-
+**Windows**
 ```bash
 venv\Scripts\activate
 ```
 
-### Linux / macOS
-
+**Linux / macOS**
 ```bash
 source venv/bin/activate
 ```
@@ -124,17 +84,41 @@ Install dependencies
 pip install -r requirements.txt
 ```
 
-Configure the database in `settings.py`.
+### Environment variables
 
-Run migrations
+Copy the example environment file and fill in your own values — no credentials are committed to
+this repository:
+
+```bash
+cp .env.example .env
+```
+
+`.env` expects:
+
+```
+SECRET_KEY=
+DEBUG=True
+DB_NAME=
+DB_USER=
+DB_PASSWORD=
+DB_HOST=127.0.0.1
+DB_PORT=3306
+CASHFREE_APP_ID=
+CASHFREE_SECRET_KEY=
+EMAIL_HOST_USER=
+EMAIL_HOST_PASSWORD=
+```
+
+Create the database
+
+```sql
+CREATE DATABASE boseservicecentre;
+```
+
+Run migrations and create a superuser
 
 ```bash
 python manage.py migrate
-```
-
-Create a superuser
-
-```bash
 python manage.py createsuperuser
 ```
 
@@ -144,18 +128,18 @@ Start the development server
 python manage.py runserver
 ```
 
-Open your browser
-
-```
-http://127.0.0.1:8000/
-```
+Visit `http://127.0.0.1:8000/`
 
 ---
 
+## Deployment
 
+The application is configured for standard Django production deployment (Gunicorn + Nginx behind
+HTTPS, `DEBUG=False`, `ALLOWED_HOSTS` and `CSRF_TRUSTED_ORIGINS` set per environment). It can be
+deployed to any VPS, or to platforms like Render or Railway with a MySQL/PostgreSQL add-on.
 
 ---
 
-# License
+## License
 
-This project is intended for portfolio and educational purposes.
+This project is shared for portfolio and educational purposes.
