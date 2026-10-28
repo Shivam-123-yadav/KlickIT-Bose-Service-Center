@@ -57,12 +57,12 @@ REST_FRAMEWORK = {
 }
 
 
-# from datetime import timedelta
+from datetime import timedelta
 
-# SIMPLE_JWT = {
-#     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),  
-#     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),  
-# }
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),  
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),  
+}
 
 
 
@@ -214,10 +214,9 @@ EMAIL_HOST = 'smtp.hostinger.com'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 EMAIL_USE_TLS = False
-EMAIL_HOST_USER = '' 
-# EMAIL_HOST_PASSWORD = '[Mm3~OUg9z' 
+EMAIL_HOST_USER = ''  
 EMAIL_HOST_PASSWORD = '' 
-DEFAULT_FROM_EMAIL = '"Bose Sales" <sales@boseservicecenter.co.in>'
+DEFAULT_FROM_EMAIL = '"Bose Sales" '
 
 
 
@@ -229,9 +228,9 @@ EMAIL_HOST_SECONDARY = 'smtp.hostinger.com'
 EMAIL_PORT_SECONDARY = 465
 EMAIL_USE_SSL_SECONDARY = True
 EMAIL_HOST_USER_SECONDARY = ''
-# EMAIL_HOST_PASSWORD_SECONDARY = '1*hE[LMD' 
+
 EMAIL_HOST_PASSWORD_SECONDARY = '' 
-# DEFAULT_FROM_EMAIL_SECONDARY = 'support@boseservicecenter.co.in'
-DEFAULT_FROM_EMAIL_SECONDARY = '"Bose Support" <support@boseservicecenter.co.in>'
+
+DEFAULT_FROM_EMAIL_SECONDARY = '"Bose Support"'
 
 
